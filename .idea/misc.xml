@@ -7,8 +7,10 @@
         <entry key="..\:/GudeokApp/app/src/main/res/drawable/alarm_icon.xml" value="0.252" />
         <entry key="..\:/GudeokApp/app/src/main/res/drawable/bottom_stroke.xml" value="0.252" />
         <entry key="..\:/GudeokApp/app/src/main/res/drawable/ic_arrow_forward_ios_black_48dp.xml" value="0.252" />
+        <entry key="..\:/GudeokApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1755" />
         <entry key="..\:/GudeokApp/app/src/main/res/drawable/ic_notifications_black_48dp.xml" value="0.252" />
-        <entry key="..\:/GudeokApp/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/GudeokApp/app/src/main/res/layout/activity_login.xml" value="0.16666666666666666" />
+        <entry key="..\:/GudeokApp/app/src/main/res/layout/activity_main.xml" value="0.5" />
       </map>
     </option>
   </component>
