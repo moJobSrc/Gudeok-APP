@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GudeokApp">
         <activity
+            android:name=".SignupActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
