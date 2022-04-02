@@ -1,5 +1,8 @@
-package com.gudeok.gudeokapp
+package com.gudeok.gudeokapp.retrofit
 
+import com.gudeok.gudeokapp.networkModel.LogInCheckOkResponse
+import com.gudeok.gudeokapp.networkModel.ResponseDTO
+import com.gudeok.gudeokapp.networkModel.TokenCheckResponse
 import retrofit2.Call
 import retrofit2.http.POST
 import retrofit2.http.Query
@@ -17,5 +20,8 @@ interface RetrofitService {
         @Query("id") id: String,
         @Query("pw") pw: String
     ): Call<ResponseDTO>
+
+    @POST("/check")
+    fun tokenCheckRequest(): Call<TokenCheckResponse>
 
 }

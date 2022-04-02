@@ -1,9 +1,10 @@
-package com.gudeok.gudeokapp
+package com.gudeok.gudeokapp.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import com.gudeok.gudeokapp.R
 
 class SignupActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

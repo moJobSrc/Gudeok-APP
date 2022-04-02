@@ -1,4 +1,4 @@
-package com.gudeok.gudeokapp
+package com.gudeok.gudeokapp.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,9 +18,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.apply {
             if (intent.hasExtra("msg")) {
-                Snackbar.make(mainTitle, "${intent.getStringExtra("msg")}", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(mainTitle, "${intent.getStringExtra("msg")}", Snackbar.LENGTH_LONG)
+                    .show()
             }
-
 
         }
 

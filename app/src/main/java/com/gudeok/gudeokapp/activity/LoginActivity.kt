@@ -1,12 +1,16 @@
-package com.gudeok.gudeokapp
+package com.gudeok.gudeokapp.activity
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.gudeok.gudeokapp.networkModel.LogInCheckOkResponse
+import com.gudeok.gudeokapp.networkModel.ResponseDTO
 import com.gudeok.gudeokapp.databinding.ActivityLoginBinding
+import com.gudeok.gudeokapp.networkModel.TokenCheckResponse
+import com.gudeok.gudeokapp.util.App
+import com.gudeok.gudeokapp.util.Prefs
+import com.gudeok.gudeokapp.retrofit.RetrofitManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -14,7 +18,7 @@ import retrofit2.Response
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var pref: SharedPreferences
+    private val pref: Prefs = App.prefs
     private val retrofit = RetrofitManager.getClient()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,10 +26,9 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        pref = getSharedPreferences("gudeok", Context.MODE_PRIVATE)
-
         binding.apply {
             loginLoginBtn.setOnClickListener {
+                //로그인 리퀘스트 전송
                 retrofit.loginRequest(loginId.text.toString(), loginPw.text.toString()).enqueue(object: Callback<LogInCheckOkResponse> {
                     override fun onFailure(call: retrofit2.Call<LogInCheckOkResponse>, t: Throwable) {
                         Log.e("retrofit", t.toString())
@@ -37,11 +40,13 @@ class LoginActivity : AppCompatActivity() {
                     ) {
                         val accessToken = response.body()?.accessToken.toString()
                         if (accessToken != "null") {
-                            Log.d("Token", accessToken)
-                            pref.edit().putString("accessToken", accessToken).apply()
+                            //로그인 성공
+                            pref.token = accessToken
+                            Log.d("Token", App.prefs.token?: "")
                             val mainIntent = Intent(applicationContext, MainActivity::class.java);
-                            mainIntent.putExtra("msg", "${loginId.text.toString()}님 반갑습니다")
+//                            mainIntent.putExtra("msg", "${loginId.text.toString()}님 반갑습니다")
                             startActivity(mainIntent)
+                            finish()
                         } else {
                             Log.d("Token", "Token is null")
                         }
@@ -52,6 +57,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             loginRegisterBtn.setOnClickListener {
+                //회원가입 리퀘스트 전송
                 retrofit.registerRequest(loginId.text.toString(), loginPw.text.toString()).enqueue(object: Callback<ResponseDTO> {
                     override fun onResponse(
                         call: Call<ResponseDTO>,

@@ -1,4 +1,4 @@
-package com.gudeok.gudeokapp
+package com.gudeok.gudeokapp.networkModel
 
 import com.google.gson.annotations.SerializedName
 

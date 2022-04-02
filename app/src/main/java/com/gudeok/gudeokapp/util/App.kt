@@ -1,13 +1,13 @@
-package com.gudeok.gudeokapp
+package com.gudeok.gudeokapp.util
 
 import android.app.Application
 
 class App: Application() {
     companion object{
-        lateinit var prefs:Prefs
+        lateinit var prefs: Prefs
     }
     override fun onCreate() {
-        prefs=Prefs(applicationContext)
+        prefs = Prefs(applicationContext)
         super.onCreate()
     }
 }

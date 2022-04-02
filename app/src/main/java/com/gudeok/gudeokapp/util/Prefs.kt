@@ -1,7 +1,8 @@
-package com.gudeok.gudeokapp
+package com.gudeok.gudeokapp.util
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 
 class Prefs(context: Context) {
     private val prefNm="gudeok"
@@ -12,4 +13,10 @@ class Prefs(context: Context) {
         set(value){
             prefs.edit().putString("token",value).apply()
         }
+
+    fun getInstance(): SharedPreferences {
+        return prefs
+    }
+
+
 }
