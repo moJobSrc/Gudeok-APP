@@ -1,0 +1,5 @@
+diff a/.idea/compiler.xml b/.idea/compiler.xml	(rejected hunks)
+@@ -3,2 +3,3 @@
+   <component name="CompilerConfiguration">
++    <bytecodeTargetLevel target="18" />
+   </component>
