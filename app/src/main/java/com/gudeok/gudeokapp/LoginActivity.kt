@@ -1,19 +1,15 @@
 package com.gudeok.gudeokapp
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import com.gudeok.gudeokapp.databinding.ActivityLoginBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
-import java.io.IOException
 
 class LoginActivity : AppCompatActivity() {
 
@@ -43,6 +39,9 @@ class LoginActivity : AppCompatActivity() {
                         if (accessToken != "null") {
                             Log.d("Token", accessToken)
                             pref.edit().putString("accessToken", accessToken).apply()
+                            val mainIntent = Intent(applicationContext, MainActivity::class.java);
+                            mainIntent.putExtra("msg", "${loginId.text.toString()}님 반갑습니다")
+                            startActivity(mainIntent)
                         } else {
                             Log.d("Token", "Token is null")
                         }

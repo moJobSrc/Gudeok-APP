@@ -2,6 +2,7 @@ package com.gudeok.gudeokapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.google.android.material.snackbar.Snackbar
 import com.gudeok.gudeokapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -14,6 +15,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.apply {
+            if (intent.hasExtra("msg")) {
+                Snackbar.make(mainTitle, "${intent.getStringExtra("msg")}", Snackbar.LENGTH_LONG).show()
+            }
+
+
+        }
 
 
 
