@@ -25,7 +25,9 @@
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/layout/activity_login.xml" value="0.35833333333333334" />
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/layout/activity_main.xml" value="0.35833333333333334" />
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/layout/activity_signup.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.67" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_signup.xml" value="0.5" />
       </map>
     </option>
   </component>
