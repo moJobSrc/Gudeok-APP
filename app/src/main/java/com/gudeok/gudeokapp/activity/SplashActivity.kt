@@ -33,7 +33,7 @@ class SplashActivity: AppCompatActivity() {
             override fun onResponse(call: Call<TokenCheckResponse>, response: Response<TokenCheckResponse>) {
                 val resbody = response.body()
                 if (resbody != null) {
-                    val isOk = resbody.ok!!
+                    val isOk = resbody.ok
 
                     Log.d("Token isn't Expired", isOk.toString())
                     if (isOk) {
@@ -50,7 +50,6 @@ class SplashActivity: AppCompatActivity() {
                     startActivity(loginIntent)
                     finish()
                 }
-                Log.d(" ASDASDASD", resbody.toString())
             }
 
             override fun onFailure(call: Call<TokenCheckResponse>, t: Throwable) {

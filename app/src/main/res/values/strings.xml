@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">GudeokApp</string>
+    <string name="menuSchedule">시간표</string>
+    <string name="menuCommunity">커뮤니티</string>
+    <string name="menuMain">메인</string>
+    <string name="menuRestaurant">급식</string>
+    <string name="menuSetting">설정</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

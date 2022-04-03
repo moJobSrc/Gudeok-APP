@@ -1,9 +1,17 @@
 package com.gudeok.gudeokapp.activity
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
+import android.widget.TextView
+import android.widget.Toolbar
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
+import com.gudeok.gudeokapp.R
 import com.gudeok.gudeokapp.databinding.ActivityMainBinding
+import com.gudeok.gudeokapp.fragment.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,16 +23,60 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        bindingToolbar()
         binding.apply {
             if (intent.hasExtra("msg")) {
-                Snackbar.make(mainTitle, "${intent.getStringExtra("msg")}", Snackbar.LENGTH_LONG)
-                    .show()
+//                Snackbar.make(mainTitle, "${intent.getStringExtra("msg")}", Snackbar.LENGTH_LONG)
+//                    .show()
             }
-
+            setListenerBottomNavigation()
+            supportFragmentManager.beginTransaction().add(R.id.fragment, HomeFragment()).commit()
         }
+    }
 
+    @SuppressLint("UseSupportActionBar")
+    private fun bindingToolbar() {
+        binding.apply {
+            val toolbar = findViewById<Toolbar>(R.id.toolbar)
+            val toolbar_title = findViewById<TextView>(R.id.toolbar_title)
+            toolbar_title.text = "goods"
+            setActionBar(toolbar)
+            supportActionBar?.apply {
+                setDisplayShowTitleEnabled(true)
+                title = "asd"
+            }
+        }
+    }
 
-
+    private fun setListenerBottomNavigation() {
+        binding.bottomNavigation.menu.getItem(2).isChecked = true
+        binding.bottomNavigation.setOnItemSelectedListener {
+            when(it.itemId) {
+                R.id.menu_main -> {
+                    replaceFragment(HomeFragment())
+                    true
+                }
+                R.id.menu_setting -> {
+                    replaceFragment(SettingFragment())
+                    true
+                }
+                R.id.menu_commnunity -> {
+                    replaceFragment(CommunityFragment())
+                    true
+                }
+                R.id.menu_schedule -> {
+                    replaceFragment(ScheduleFragment())
+                    true
+                }
+                R.id.menu_restaurant -> {
+                    replaceFragment(BobFragment())
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+    private fun replaceFragment(fragmentLayout: Fragment) {
+        supportFragmentManager.beginTransaction().replace(R.id.fragment , fragmentLayout).commitAllowingStateLoss()
     }
 }

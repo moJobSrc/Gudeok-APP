@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_schedule"
+        android:icon="@drawable/ic_event_available_black_48dp"
+        android:title="@string/menuSchedule"/>
+
+    <item
+        android:id="@+id/menu_commnunity"
+        android:icon="@drawable/ic_question_answer_black_48dp"
+        android:title="@string/menuCommunity"/>
+
+    <item
+        android:id="@+id/menu_main"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_black_48dp"
+        android:title="@string/menuMain"/>
+
+    <item
+        android:id="@+id/menu_restaurant"
+        android:icon="@drawable/ic_restaurant_black_48dp"
+        android:title="@string/menuRestaurant"/>
+
+    <item
+        android:id="@+id/menu_setting"
+        android:icon="@drawable/ic_settings_black_48dp"
+        android:title="@string/menuSetting"/>
+
+</menu>
