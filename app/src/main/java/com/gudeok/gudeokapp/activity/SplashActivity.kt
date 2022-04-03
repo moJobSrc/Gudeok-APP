@@ -31,17 +31,26 @@ class SplashActivity: AppCompatActivity() {
         //token 만료 확인 (aka 자동로그인)
         retrofit.tokenCheckRequest().enqueue(object: Callback<TokenCheckResponse> {
             override fun onResponse(call: Call<TokenCheckResponse>, response: Response<TokenCheckResponse>) {
-                val isOk = response.body()?.ok!!
-                Log.d("Token isn't Expired", isOk.toString())
-                if (isOk) {
-                    val mainIntent = Intent(applicationContext, MainActivity::class.java);
-                    startActivity(mainIntent)
-                    finish()
+                val resbody = response.body()
+                if (resbody != null) {
+                    val isOk = resbody.ok!!
+
+                    Log.d("Token isn't Expired", isOk.toString())
+                    if (isOk) {
+                        val mainIntent = Intent(applicationContext, MainActivity::class.java);
+                        startActivity(mainIntent)
+                        finish()
+                    } else {
+                        val loginIntent = Intent(applicationContext, LoginActivity::class.java);
+                        startActivity(loginIntent)
+                        finish()
+                    }
                 } else {
                     val loginIntent = Intent(applicationContext, LoginActivity::class.java);
                     startActivity(loginIntent)
                     finish()
                 }
+                Log.d(" ASDASDASD", resbody.toString())
             }
 
             override fun onFailure(call: Call<TokenCheckResponse>, t: Throwable) {
