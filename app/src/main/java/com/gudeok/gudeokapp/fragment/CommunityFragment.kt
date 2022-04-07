@@ -1,11 +1,21 @@
 package com.gudeok.gudeokapp.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.gudeok.gudeokapp.R
+import com.gudeok.gudeokapp.networkModel.BbsListResponse
+import com.gudeok.gudeokapp.networkModel.ResponseDTO
+import com.gudeok.gudeokapp.retrofit.RetrofitManager
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.util.*
+import kotlin.collections.ArrayList
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -18,16 +28,14 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class CommunityFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    lateinit var bbslistAdapter: bbslistAdapter
+    private var bbslistData: ArrayList<bbslistData> = ArrayList<bbslistData>()
+    lateinit var bbslistView: RecyclerView
+    private val retrofit = RetrofitManager.getClient()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
@@ -35,26 +43,35 @@ class CommunityFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_community, container, false)
-    }
+        val view = inflater.inflate(R.layout.fragment_community, container, false)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CommunityFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CommunityFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        bbslistView = view.findViewById<RecyclerView>(R.id.communityView)!!
+
+        retrofit.loadbbsList(1).enqueue(object: Callback<BbsListResponse> {
+            override fun onResponse(call: Call<BbsListResponse>, response: Response<BbsListResponse>) {
+                val response = response.body()?.bbslist
+                if (!response.isNullOrEmpty()) {
+                    bbslistData = response
+//                    Log.d("bbslist", bbslistData.toString())
+//                    bbslistData.add(bbslistData(title = "asdf",author = "me",
+//                        date = Date(),id = 1,
+//                        uuid = "",images = "",
+//                        beechu = 0,gaechu = 1,
+//                        comment = "",content = "asdfasdf",
+//                        seen = 0))
+                    bbslistAdapter = bbslistAdapter(requireContext(), bbslistData)
+
+                    bbslistView.adapter = bbslistAdapter
                 }
+
             }
+
+            override fun onFailure(call: Call<BbsListResponse>, t: Throwable) {
+                Log.e("bbslist", t.message.toString())
+            }
+
+        })
+
+        return view
     }
 }

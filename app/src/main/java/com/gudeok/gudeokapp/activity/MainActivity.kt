@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     //https://open.neis.go.kr/hub/mealServiceDietInfo?Type=json&pIndex=1&pSize=1&ATPT_OFCDC_SC_CODE=C10&SD_SCHUL_CODE=7150087&MLSV_FROM_YMD=20220327&MLSV_TO_YMD=20220327
 
     lateinit var binding: ActivityMainBinding
+    lateinit var toolbar_title: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,8 +39,8 @@ class MainActivity : AppCompatActivity() {
     private fun bindingToolbar() {
         binding.apply {
             val toolbar = findViewById<Toolbar>(R.id.toolbar)
-            val toolbar_title = findViewById<TextView>(R.id.toolbar_title)
-            toolbar_title.text = "goods"
+            toolbar_title = findViewById<TextView>(R.id.toolbar_title)
+            toolbar_title.text = "구덕고등학교"
             setActionBar(toolbar)
             supportActionBar?.apply {
                 setDisplayShowTitleEnabled(true)
@@ -61,6 +62,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.menu_commnunity -> {
+                    toolbar_title.text = "커뮤니티"
                     replaceFragment(CommunityFragment())
                     true
                 }
