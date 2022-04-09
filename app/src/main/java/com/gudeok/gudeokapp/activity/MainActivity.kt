@@ -41,14 +41,14 @@ class MainActivity : AppCompatActivity() {
             val toolbar = findViewById<Toolbar>(R.id.toolbar)
             toolbar_title = findViewById<TextView>(R.id.toolbar_title)
             toolbar_title.text = "구덕고등학교"
-            setActionBar(toolbar)
-            supportActionBar?.apply {
-                toolbar.title = ""
-                toolbar.subtitle = ""
-                setDisplayShowCustomEnabled(true);
-                setDisplayShowTitleEnabled(false);//기본 제목을 없애줍니다.
-                setDisplayHomeAsUpEnabled(true);
-            }
+//            setActionBar(toolbar)
+//            supportActionBar?.apply {
+//                toolbar.title = ""
+//                toolbar.subtitle = ""
+//                setDisplayShowCustomEnabled(true);
+//                setDisplayShowTitleEnabled(false);//기본 제목을 없애줍니다.
+//                setDisplayHomeAsUpEnabled(true);
+//            }
         }
     }
 
@@ -62,6 +62,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.menu_setting -> {
+                    toolbar_title.text = "설정"
                     replaceFragment(SettingFragment())
                     true
                 }
@@ -71,10 +72,12 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.menu_schedule -> {
+                    toolbar_title.text = "시간표"
                     replaceFragment(ScheduleFragment())
                     true
                 }
                 R.id.menu_restaurant -> {
+                    toolbar_title.text = "급식"
                     replaceFragment(BobFragment())
                     true
                 }
