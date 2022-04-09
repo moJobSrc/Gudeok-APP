@@ -8,7 +8,7 @@
 
     <!--  ToolBar  -->
     <include
-        android:id="@+id/include"
+        android:id="@+id/toolbar"
         layout="@layout/toolbarlayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +21,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
     </androidx.fragment.app.FragmentContainerView>
 
@@ -32,7 +32,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_navigation_menu"
         app:labelVisibilityMode="labeled"
-        app:itemBackground="@color/white"/>
+        app:itemBackground="@color/white" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,10 @@
 package com.gudeok.gudeokapp.networkModel
 
 import com.google.gson.annotations.SerializedName
-import com.gudeok.gudeokapp.fragment.bbslistData
+import com.gudeok.gudeokapp.fragment.PostlistData
 
-data class BbsListResponse (
+data class PostListResponse (
     @SerializedName("status") val status: Int,
     @SerializedName("ok") val ok: Boolean,
-    @SerializedName("bbslist") val bbslist: ArrayList<bbslistData>
+    @SerializedName("bbslist") val postlist: ArrayList<PostlistData>
 )

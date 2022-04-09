@@ -8,8 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gudeok.gudeokapp.R
-import com.gudeok.gudeokapp.networkModel.BbsListResponse
-import com.gudeok.gudeokapp.networkModel.ResponseDTO
+import com.gudeok.gudeokapp.networkModel.PostListResponse
 import com.gudeok.gudeokapp.retrofit.RetrofitManager
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,8 +28,8 @@ private const val ARG_PARAM2 = "param2"
  */
 class CommunityFragment : Fragment() {
 
-    lateinit var bbslistAdapter: bbslistAdapter
-    private var bbslistData: ArrayList<bbslistData> = ArrayList<bbslistData>()
+    lateinit var postlistAdapater: PostlistAdapter
+    private var postlistData: ArrayList<PostlistData> = ArrayList<PostlistData>()
     lateinit var bbslistView: RecyclerView
     private val retrofit = RetrofitManager.getClient()
 
@@ -47,11 +46,11 @@ class CommunityFragment : Fragment() {
 
         bbslistView = view.findViewById<RecyclerView>(R.id.communityView)!!
 
-        retrofit.loadbbsList(1).enqueue(object: Callback<BbsListResponse> {
-            override fun onResponse(call: Call<BbsListResponse>, response: Response<BbsListResponse>) {
-                val response = response.body()?.bbslist
+        retrofit.loadbbsList(1).enqueue(object: Callback<PostListResponse> {
+            override fun onResponse(call: Call<PostListResponse>, response: Response<PostListResponse>) {
+                val response = response.body()?.postlist
                 if (!response.isNullOrEmpty()) {
-                    bbslistData = response
+                    postlistData = response
 //                    Log.d("bbslist", bbslistData.toString())
 //                    bbslistData.add(bbslistData(title = "asdf",author = "me",
 //                        date = Date(),id = 1,
@@ -59,14 +58,14 @@ class CommunityFragment : Fragment() {
 //                        beechu = 0,gaechu = 1,
 //                        comment = "",content = "asdfasdf",
 //                        seen = 0))
-                    bbslistAdapter = bbslistAdapter(requireContext(), bbslistData)
+                    postlistAdapater = PostlistAdapter(requireContext(), postlistData)
 
-                    bbslistView.adapter = bbslistAdapter
+                    bbslistView.adapter = postlistAdapater
                 }
 
             }
 
-            override fun onFailure(call: Call<BbsListResponse>, t: Throwable) {
+            override fun onFailure(call: Call<PostListResponse>, t: Throwable) {
                 Log.e("bbslist", t.message.toString())
             }
 

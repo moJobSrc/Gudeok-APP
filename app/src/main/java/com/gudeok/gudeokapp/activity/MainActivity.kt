@@ -43,8 +43,11 @@ class MainActivity : AppCompatActivity() {
             toolbar_title.text = "구덕고등학교"
             setActionBar(toolbar)
             supportActionBar?.apply {
-                setDisplayShowTitleEnabled(true)
-                title = "asd"
+                toolbar.title = ""
+                toolbar.subtitle = ""
+                setDisplayShowCustomEnabled(true);
+                setDisplayShowTitleEnabled(false);//기본 제목을 없애줍니다.
+                setDisplayHomeAsUpEnabled(true);
             }
         }
     }
@@ -54,6 +57,7 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigation.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.menu_main -> {
+                    toolbar_title.text = "구덕고등학교"
                     replaceFragment(HomeFragment())
                     true
                 }
