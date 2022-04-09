@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gudeok.gudeokapp.R
 import com.gudeok.gudeokapp.activity.ContentActivity
 
-class PostlistAdapter(private val context: Context, private val data: ArrayList<PostlistData>): RecyclerView.Adapter<PostlistAdapter.ViewHolder>() {
+class PostlistAdapter(private val context: Context, private val data: ArrayList<PostData>): RecyclerView.Adapter<PostlistAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.bbslist_item, parent, false)
@@ -35,7 +35,7 @@ class PostlistAdapter(private val context: Context, private val data: ArrayList<
         private val gaechu: TextView = itemView.findViewById(R.id.bbslistGaechu)
         private val comment: TextView = itemView.findViewById(R.id.bbslistComment)
 
-        fun bind(item: PostlistData) {
+        fun bind(item: PostData) {
             title.text = item.title
             author.text = item.author
             summary.text = item.content
@@ -46,7 +46,7 @@ class PostlistAdapter(private val context: Context, private val data: ArrayList<
 
             layout.setOnClickListener {
                 val intent = Intent(context, ContentActivity::class.java).apply {
-                    putExtra("postId",item.id)
+                    putExtra("post_id",item.id)
                 }
                 context.startActivity(intent)
             }

@@ -29,7 +29,7 @@ private const val ARG_PARAM2 = "param2"
 class CommunityFragment : Fragment() {
 
     lateinit var postlistAdapater: PostlistAdapter
-    private var postlistData: ArrayList<PostlistData> = ArrayList<PostlistData>()
+    private var postData: ArrayList<PostData> = ArrayList<PostData>()
     lateinit var bbslistView: RecyclerView
     private val retrofit = RetrofitManager.getClient()
 
@@ -50,7 +50,7 @@ class CommunityFragment : Fragment() {
             override fun onResponse(call: Call<PostListResponse>, response: Response<PostListResponse>) {
                 val response = response.body()?.postlist
                 if (!response.isNullOrEmpty()) {
-                    postlistData = response
+                    postData = response
 //                    Log.d("bbslist", bbslistData.toString())
 //                    bbslistData.add(bbslistData(title = "asdf",author = "me",
 //                        date = Date(),id = 1,
@@ -58,7 +58,7 @@ class CommunityFragment : Fragment() {
 //                        beechu = 0,gaechu = 1,
 //                        comment = "",content = "asdfasdf",
 //                        seen = 0))
-                    postlistAdapater = PostlistAdapter(requireContext(), postlistData)
+                    postlistAdapater = PostlistAdapter(requireContext(), postData)
 
                     bbslistView.adapter = postlistAdapater
                 }

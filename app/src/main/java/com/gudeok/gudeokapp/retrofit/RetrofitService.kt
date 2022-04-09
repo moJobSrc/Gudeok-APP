@@ -1,9 +1,6 @@
 package com.gudeok.gudeokapp.retrofit
 
-import com.gudeok.gudeokapp.networkModel.PostListResponse
-import com.gudeok.gudeokapp.networkModel.LogInCheckOkResponse
-import com.gudeok.gudeokapp.networkModel.ResponseDTO
-import com.gudeok.gudeokapp.networkModel.TokenCheckResponse
+import com.gudeok.gudeokapp.networkModel.*
 import retrofit2.Call
 import retrofit2.http.POST
 import retrofit2.http.Query
@@ -26,6 +23,11 @@ interface RetrofitService {
     fun loadbbsList(
         @Query("page") id: Int
     ): Call<PostListResponse>
+
+    @POST("/bbsGet")
+    fun seePost(
+        @Query("id") id: Int
+    ): Call<PostResponse>
 
     @POST("/check")
     fun tokenCheckRequest(): Call<TokenCheckResponse>

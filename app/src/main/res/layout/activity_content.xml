@@ -44,6 +44,7 @@
             android:gravity="center_vertical">
 
             <TextView
+                android:id="@+id/author"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="11sp"
@@ -56,6 +57,7 @@
                 android:background="@color/lowestColor"/>
 
             <TextView
+                android:id="@+id/view"
                 android:layout_marginStart="3dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -69,6 +71,7 @@
                 android:background="@color/lowestColor"/>
 
             <TextView
+                android:id="@+id/date"
                 android:layout_marginStart="3dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -88,7 +91,7 @@
             android:text="본문 내용"
             android:textSize="15sp"
             android:layout_margin="4dp"
-            android:id="@+id/content_contents"
+            android:id="@+id/post_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -123,6 +126,7 @@
                     app:tint="@color/white" />
 
                 <TextView
+                    android:id="@+id/gaechu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
@@ -157,6 +161,7 @@
                     app:tint="@color/white" />
 
                 <TextView
+                    android:id="@+id/beechu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"

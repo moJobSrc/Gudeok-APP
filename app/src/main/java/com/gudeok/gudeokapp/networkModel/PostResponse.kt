@@ -3,8 +3,8 @@ package com.gudeok.gudeokapp.networkModel
 import com.google.gson.annotations.SerializedName
 import com.gudeok.gudeokapp.fragment.PostData
 
-data class PostListResponse (
+data class PostResponse(
     @SerializedName("status") val status: Int,
-    @SerializedName("ok") val ok: Boolean,
-    @SerializedName("bbslist") val postlist: ArrayList<PostData>
+    @SerializedName("message") val message: String,
+    @SerializedName("post") val post: PostData
 )
