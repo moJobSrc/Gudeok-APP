@@ -5,4 +5,5 @@
     <string name="menuMain">메인</string>
     <string name="menuRestaurant">급식</string>
     <string name="menuSetting">설정</string>
+    <string name="weatherTemp">%sº</string>
 </resources>

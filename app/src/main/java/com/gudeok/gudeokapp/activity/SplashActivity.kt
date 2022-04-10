@@ -20,11 +20,9 @@ class SplashActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Handler().postDelayed({
+        val handler = Handler().postDelayed({
             isLoginAlive()
         }, 300);
-
-        isLoginAlive()
     }
 
     private fun isLoginAlive() {
