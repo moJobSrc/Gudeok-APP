@@ -13,4 +13,14 @@
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="15sp"
+        android:backgroundTint="@color/primaryColor"
+        app:tint="@color/white"
+        android:src="@drawable/ic_round_edit_24" />
+
 </FrameLayout>
