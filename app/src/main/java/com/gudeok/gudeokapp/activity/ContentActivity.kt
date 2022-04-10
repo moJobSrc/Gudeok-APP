@@ -27,6 +27,10 @@ class ContentActivity : AppCompatActivity() {
             Log.d("id", post_id.toString())
         }
 
+        binding.contentBackButton.setOnClickListener {
+            finish()
+        }
+
         retrofit.seePost(post_id).enqueue(object : Callback<PostResponse> {
             override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
                 val response = response.body()

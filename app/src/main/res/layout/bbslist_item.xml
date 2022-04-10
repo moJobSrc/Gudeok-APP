@@ -4,127 +4,123 @@
     android:id="@+id/postlistLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="14dp"
-    android:focusable="true"
-    android:clickable="true"
-    android:foreground="?android:selectableItemBackground">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/bbslistTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="제목"
-        android:maxLines="1"
-        android:ellipsize="end"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="19sp"
-        android:gravity="center_vertical"/>
-    <TextView
-        android:id="@+id/bbslistSummary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="내용부분"
-        android:textColor="@color/lowestColor"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:maxLines="1"
-        android:ellipsize="end"/>
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical">
-        <TextView
-            android:id="@+id/bbslistAuthor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="작성자"
-            android:textColor="@color/middleColor"
-            android:textStyle="bold"
-            android:textSize="16sp"/>
-        <TextView
-            android:id="@+id/bbslistDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="17시 50분"
-            android:textColor="@color/lowestColor"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:layout_marginStart="10dp"/>
-        <TextView
-            android:id="@+id/bbslistSeen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="조회 5"
-            android:textColor="@color/lowestColor"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:layout_marginStart="10dp"/>
-    </LinearLayout>
-    
-    <LinearLayout
-        android:layout_marginTop="1dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:layout_marginBottom="12dp">
+        android:padding="14dp">
 
+        <TextView
+            android:id="@+id/bbslistTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="제목"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            android:gravity="center_vertical"/>
+        <TextView
+            android:id="@+id/bbslistSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="내용부분"
+            android:textColor="@color/lowestColor"
+            android:textSize="16sp"
+            android:maxLines="1"
+            android:ellipsize="end"/>
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:src="@drawable/ic_round_thumb_up_24"
-                app:tint="@color/lowestColor" />
-
+            android:gravity="center_vertical">
             <TextView
-                android:id="@+id/bbslistGaechu"
+                android:id="@+id/bbslistAuthor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
+                android:text="작성자"
+                android:textColor="@color/middleColor"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/bbslistDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="17시 50분"
+                android:textColor="@color/lowestColor"
                 android:textSize="16sp"
-                android:text="10"
-                android:layout_marginStart="5dp"/>
-
+                android:layout_marginStart="10dp"/>
+            <TextView
+                android:id="@+id/bbslistSeen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="조회 5"
+                android:textColor="@color/lowestColor"
+                android:textSize="16sp"
+                android:layout_marginStart="10dp"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginStart="13dp"
+            android:layout_marginTop="1dp"
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:gravity="center_vertical">
 
-            <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:src="@drawable/ic_baseline_chat_24"
-                app:tint="@color/lowestColor" />
-
-            <TextView
-                android:id="@+id/bbslistComment"
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:text="10"
-                android:layout_marginStart="5dp"/>
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_round_thumb_up_24"
+                    app:tint="@color/lowestColor" />
+
+                <TextView
+                    android:id="@+id/bbslistGaechu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="10"
+                    android:layout_marginStart="5dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginStart="13dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_baseline_chat_24"
+                    app:tint="@color/lowestColor" />
+
+                <TextView
+                    android:id="@+id/bbslistComment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="10"
+                    android:layout_marginStart="5dp"/>
+
+            </LinearLayout>
+
 
         </LinearLayout>
-
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/black"/>
+        android:layout_height="0.3dp"
+        android:background="@color/lowestColor"/>
 
 </LinearLayout>
