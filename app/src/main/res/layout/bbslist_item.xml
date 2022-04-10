@@ -20,7 +20,7 @@
             android:maxLines="1"
             android:ellipsize="end"
             android:textColor="@color/black"
-            android:textSize="19sp"
+            android:textSize="14sp"
             android:gravity="center_vertical"/>
         <TextView
             android:id="@+id/bbslistSummary"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:text="내용부분"
             android:textColor="@color/lowestColor"
-            android:textSize="16sp"
+            android:textSize="12sp"
             android:maxLines="1"
             android:ellipsize="end"/>
         <LinearLayout
@@ -42,14 +42,14 @@
                 android:layout_height="wrap_content"
                 android:text="작성자"
                 android:textColor="@color/middleColor"
-                android:textSize="16sp"/>
+                android:textSize="12sp"/>
             <TextView
                 android:id="@+id/bbslistDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="17시 50분"
                 android:textColor="@color/lowestColor"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:layout_marginStart="10dp"/>
             <TextView
                 android:id="@+id/bbslistSeen"
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:text="조회 5"
                 android:textColor="@color/lowestColor"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:layout_marginStart="10dp"/>
         </LinearLayout>
 
@@ -75,8 +75,8 @@
                 android:gravity="center">
 
                 <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:src="@drawable/ic_round_thumb_up_24"
                     app:tint="@color/lowestColor" />
 
@@ -84,7 +84,7 @@
                     android:id="@+id/bbslistGaechu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     android:text="10"
                     android:layout_marginStart="5dp"/>
 
@@ -98,8 +98,8 @@
                 android:gravity="center">
 
                 <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:src="@drawable/ic_baseline_chat_24"
                     app:tint="@color/lowestColor" />
 
@@ -107,7 +107,7 @@
                     android:id="@+id/bbslistComment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     android:text="10"
                     android:layout_marginStart="5dp"/>
 
@@ -119,8 +119,10 @@
     </LinearLayout>
 
     <View
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
         android:layout_width="match_parent"
-        android:layout_height="0.3dp"
-        android:background="@color/lowestColor"/>
+        android:layout_height="0.5dp"
+        android:background="#D2D2D2"/>
 
 </LinearLayout>

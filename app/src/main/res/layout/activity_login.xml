@@ -87,6 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
+                android:inputType="textPassword"
                 android:hint="비밀번호를 입력해주세요"
                 android:textColorHint="@color/lowestColor"
                 android:textColor="@color/middleColor"
