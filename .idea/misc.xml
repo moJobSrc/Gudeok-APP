@@ -11,6 +11,8 @@
         <entry key="..\:/GudeokApp/app/src/main/res/drawable/ic_notifications_black_48dp.xml" value="0.252" />
         <entry key="..\:/GudeokApp/app/src/main/res/layout/activity_login.xml" value="0.16666666666666666" />
         <entry key="..\:/GudeokApp/app/src/main/res/layout/activity_main.xml" value="0.5" />
+        <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/drawable-v24/roundsquare_stroke.xml" value="0.279" />
+        <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/drawable/beechu_background.xml" value="0.279" />
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/drawable/border_stroke.xml" value="0.2165" />
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/drawable/border_stroke2.xml" value="0.2165" />
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/drawable/bottom_stroke.xml" value="0.2165" />
@@ -27,14 +29,19 @@
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/drawable/ic_verified_black_48dp.xml" value="0.2165" />
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/drawable/ic_verified_green_48dp.xml" value="0.2165" />
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/drawable/login_button.xml" value="0.2165" />
+        <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/drawable/thumb1.xml" value="0.279" />
+        <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/drawable/track1.xml" value="0.279" />
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/font/font_family.xml" value="0.2824074074074074" />
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/layout/activity_content.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/layout/activity_login.xml" value="0.4703703703703704" />
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/layout/activity_signup.xml" value="0.33" />
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/layout/bbslist_item.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/layout/fragment_bob.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/layout/fragment_community.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/layout/fragment_schedule.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/layout/fragment_setting.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/layout/toolbarlayout.xml" value="0.3333333333333333" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.67" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
