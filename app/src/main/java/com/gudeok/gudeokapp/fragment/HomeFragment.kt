@@ -10,11 +10,7 @@ import androidx.fragment.app.Fragment
 import com.google.gson.Gson
 import com.google.gson.JsonParser
 import com.google.gson.annotations.SerializedName
-import com.google.gson.reflect.TypeToken
 import com.gudeok.gudeokapp.R
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import okhttp3.*
 import org.json.JSONException
 import java.io.IOException
@@ -27,6 +23,7 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 class HomeFragment : Fragment() {
+    val client = OkHttpClient.Builder().connectTimeout(15, TimeUnit.SECONDS).build()
     lateinit var tempText:TextView
     lateinit var skyText: TextView
 
@@ -34,7 +31,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var root = inflater.inflate(R.layout.fragment_home, container, false)
+        val root = inflater.inflate(R.layout.fragment_home, container, false)
 
         tempText = root.findViewById(R.id.tempText)
         skyText = root.findViewById(R.id.skyText)
@@ -45,12 +42,37 @@ class HomeFragment : Fragment() {
         val getTime = SimpleDateFormat("HH00").format(date)
         Log.i("datetime.../",getDay + getTime)
         lookUpWeather(getDay,getTime)
-
-//        NetworkThread2().start()
+        getCafeteria(Date(), LunchType.Lunch)
 
         return root
     }
 
+    enum class LunchType(val type: String) {
+        Lunch("중식"),
+        Dinner("석식")
+    }
+
+    fun getCafeteria(date: Date, type: LunchType) {
+
+        val request = Request.Builder()
+            .url("https://open.neis.go.kr/hub/mealServiceDietInfo?" +
+                    "Type=json&pIndex=1&pSize=1&ATPT_OFCDC_SC_CODE=C10&SD_SCHUL_CODE=7150087" +
+                    "&MMEAL_SC_NM=${type.type}&MLSV_FROM_YMD=20220520&MLSV_TO_YMD=20220520" +
+                    "&key=aa8d19197e1c4f59a4c5bea9c37a2171")
+            .build()
+
+        client.newCall(request).enqueue(object: Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                Log.d("점심", response.body!!.string())
+            }
+
+        })
+
+    }
 
     data class WeatherData(
         @SerializedName("baseData") val baseDate: String,
@@ -72,7 +94,6 @@ class HomeFragment : Fragment() {
         val serviceKey =
             "e%2BE34vxmWfjVQxtz3yvzeTnghYXewlok7FK5jEX7ffIBm9L%2Fky35XT7CYYWxkfBgfPS22GXw9UzQREBRIRVnpQ%3D%3D"
         "e%25252BE34vxmWfjVQxtz3yvzeTnghYXewlok7FK5jEX7ffIBm9L%25252Fky35XT7CYYWxkfBgfPS22GXw9UzQREBRIRVnpQ%25253D%25253D"
-        val client = OkHttpClient.Builder().connectTimeout(15, TimeUnit.SECONDS).build()
 
         val httpUrl: HttpUrl = HttpUrl.Builder()
             .scheme("http")

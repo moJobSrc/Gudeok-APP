@@ -51,7 +51,7 @@ class ContentActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<PostResponse>, t: Throwable) {
-                TODO("Not yet implemented")
+
             }
 
         })

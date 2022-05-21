@@ -51,13 +51,6 @@ class CommunityFragment : Fragment() {
                 val response = response.body()?.postlist
                 if (!response.isNullOrEmpty()) {
                     postData = response
-//                    Log.d("bbslist", bbslistData.toString())
-//                    bbslistData.add(bbslistData(title = "asdf",author = "me",
-//                        date = Date(),id = 1,
-//                        uuid = "",images = "",
-//                        beechu = 0,gaechu = 1,
-//                        comment = "",content = "asdfasdf",
-//                        seen = 0))
                     postlistAdapater = PostlistAdapter(requireContext(), postData)
 
                     bbslistView.adapter = postlistAdapater
