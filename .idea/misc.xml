@@ -3,7 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Gudeok-APP/app/src/main/res/layout/fragment_setting.xml" value="0.3233695652173913" />
         <entry key="..\:/GudeokApp/View/src/main/res/layout/activity_main.xml" value="0.34375" />
         <entry key="..\:/GudeokApp/app/src/main/res/drawable/alarm_icon.xml" value="0.252" />
         <entry key="..\:/GudeokApp/app/src/main/res/drawable/bottom_stroke.xml" value="0.252" />
@@ -34,6 +33,7 @@
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/drawable/track1.xml" value="0.279" />
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/font/font_family.xml" value="0.2824074074074074" />
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/layout/activity_content.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/layout/activity_fixprofile.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/layout/activity_login.xml" value="0.4703703703703704" />
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/user1/Desktop/GD APP/APPGIT/app/src/main/res/layout/activity_signup.xml" value="0.33" />
