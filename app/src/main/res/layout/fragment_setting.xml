@@ -30,7 +30,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="홍길동"
-                        android:textSize="16dp"
+                        android:textSize="18dp"
                         android:textColor="@color/topColor"/>
 
                     <LinearLayout
@@ -41,7 +41,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/middleColor"
-                            android:textSize="12dp"
+                            android:textSize="14dp"
                             android:text="1학년 2반 9번"/>
                         <View
                             android:layout_width="0dp"
@@ -51,7 +51,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/primaryColor"
-                            android:textSize="12dp"
+                            android:textSize="14dp"
                             android:text="수정하기"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -70,6 +70,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
+                    android:layout_marginBottom="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16dp"
@@ -175,6 +176,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
+                    android:layout_marginBottom="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16dp"

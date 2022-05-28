@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import com.gudeok.gudeokapp.R
 import com.gudeok.gudeokapp.retrofit.RetrofitManager
 
@@ -24,7 +25,7 @@ class SettingFragment : Fragment() {
     private var param2: String? = null
     private val retrofit = RetrofitManager.getClient()
 
-    lateinit var logout_btn: Button
+    lateinit var logout_btn: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +39,7 @@ class SettingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        val root = inflater.inflate(R.layout.fragment_setting, container, false)
         logout_btn = root.findViewById(R.id.setting_logout)
         logout_btn.setOnClickListener {
             // 로그아웃
