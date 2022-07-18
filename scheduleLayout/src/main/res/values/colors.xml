@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="snow">#FFFFFAFA</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="limegreen">#FF32CD32</color>
+    <color name="mint">#BDFCC9</color>
+    <color name="dark_mint">#A9E8BF</color>
+    <color name="gray">#FF808080</color>
+    <color name="orange">#FFFFA500</color>
+    <color name="red">#FFFF0000</color>
+    <color name="dark_read">#EB0000</color>
+    <color name="yellow">#FFFFFF00</color>
+    <color name="dark_yellow">#FFE400</color>
+    <color name="skyblue">#4374D9</color>
+    <color name="dark_skyblue">#396ACF</color>
+    <color name="cell_backgroud_color">#D5D5D5</color>
+    <color name="cell_color">#FFFFFFFF</color>
+    <color name="statusBar_color">#FF000000</color>
+    <color name="transparent">#00000000</color>
+</resources>

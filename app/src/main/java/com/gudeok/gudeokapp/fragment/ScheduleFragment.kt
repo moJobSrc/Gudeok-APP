@@ -5,56 +5,52 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.github.tlaabs.timetableview.Schedule
+import com.github.tlaabs.timetableview.Time
+import com.github.tlaabs.timetableview.TimetableView
 import com.gudeok.gudeokapp.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ScheduleFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ScheduleFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_schedule, container, false)
+        val root = inflater.inflate(R.layout.fragment_schedule, container, false)
+        val timetable = root.findViewById(R.id.timetable) as TimetableView
+        val schedules = arrayListOf<Schedule>()
+        val schedule = Schedule()
+        schedule.startTime = Time(10, 0)
+        schedule.startTime = Time(13, 30)
+        schedule.classTitle = "기가"
+        schedule.day = 1
+        schedules.add(schedule)
+        timetable.add(schedules)
+        return root
     }
 
-    companion object {
+    private fun getScheduleTime(perio: String): String {
         /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ScheduleFragment.
+         * 시간은 3시간 단위로 조회해야 한다. 안그러면 정보가 없다고 뜬다.
+         * 0200, 0500, 0800 ~ 2300까지
+         * 그래서 시간을 입력했을때 switch문으로 조회 가능한 시간대로 변경해주었다.
          */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ScheduleFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        var perio = perio
+        perio = when (perio) {
+            "1" -> "0200"
+            "2" -> "0500"
+            "3" -> "0800"
+            "4" -> "1100"
+            "5" -> "1400"
+            "6" -> "1700"
+            "7" -> "2000"
+            else -> "2300"
+        }
+        return perio
     }
 }
