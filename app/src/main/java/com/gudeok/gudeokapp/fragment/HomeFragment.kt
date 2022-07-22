@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.google.gson.Gson
 import com.google.gson.JsonParser
 import com.google.gson.annotations.SerializedName
+import com.gudeok.gudeokapp.BuildConfig
 import com.gudeok.gudeokapp.R
 import okhttp3.*
 import org.json.JSONException
@@ -23,7 +24,7 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 class HomeFragment : Fragment() {
-    val client = OkHttpClient.Builder().connectTimeout(15, TimeUnit.SECONDS).build()
+    private val client = OkHttpClient.Builder().connectTimeout(15, TimeUnit.SECONDS).build()
     lateinit var tempText:TextView
     lateinit var skyText: TextView
 
@@ -58,7 +59,7 @@ class HomeFragment : Fragment() {
             .url("https://open.neis.go.kr/hub/mealServiceDietInfo?" +
                     "Type=json&pIndex=1&pSize=1&ATPT_OFCDC_SC_CODE=C10&SD_SCHUL_CODE=7150087" +
                     "&MMEAL_SC_NM=${type.type}&MLSV_FROM_YMD=20220520&MLSV_TO_YMD=20220520" +
-                    "&key=aa8d19197e1c4f59a4c5bea9c37a2171")
+                    "&key=${BuildConfig.NEIS_KEY}")
             .build()
 
         client.newCall(request).enqueue(object: Callback {
@@ -122,25 +123,34 @@ class HomeFragment : Fragment() {
             override fun onResponse(call: Call, response: Response) {
                 val res = response.body!!.string()
                 Log.d("response", res)
-                val json = JsonParser.parseString(res).asJsonObject
-                val list = Gson().fromJson(json["response"].asJsonObject["body"].asJsonObject["items"].asJsonObject["item"].asJsonArray.toString(), Array<WeatherData>::class.java)
-                for (item in list) {
-                    if (item.category == "SKY") {
-                        when(item.fcstValue){
-                            "1" -> weather = "맑음"
-                            "2" -> weather = "비"
-                            "3" -> weather = "구름"
-                            "4" -> weather = "흐림"
+                //정각이 넘어가면 오류 발생  timeChange 함수 변경 필요
+                try {
+                    val json = JsonParser.parseString(res).asJsonObject
+                    val list = Gson().fromJson(json["response"].asJsonObject["body"].asJsonObject["items"].asJsonObject["item"].asJsonArray.toString(), Array<WeatherData>::class.java)
+                    for (item in list) {
+                        if (item.category == "SKY") {
+                            when(item.fcstValue){
+                                "1" -> weather = "맑음"
+                                "2" -> weather = "비"
+                                "3" -> weather = "구름"
+                                "4" -> weather = "흐림"
+                            }
+                        }
+                        if (item.category == "TMP") {
+                            tmperature = item.fcstValue
                         }
                     }
-                    if (item.category == "TMP") {
-                        tmperature = item.fcstValue
+                    activity?.runOnUiThread {
+                        tempText.text = getString(R.string.weatherTemp, tmperature)
+                        skyText.text = weather
+                    }
+                } catch (e: Exception) {
+                    activity?.runOnUiThread {
+                        tempText.text = "날씨 정보를 가져올수없습니다."
+                        skyText.text = weather
                     }
                 }
-                activity?.runOnUiThread {
-                    tempText.text = getString(R.string.weatherTemp, tmperature)
-                    skyText.text = weather
-                }
+
             }
         })
     }

@@ -9,7 +9,6 @@ import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Display;
 import android.view.Gravity;
@@ -25,6 +24,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Random;
 
 public class TimetableView extends LinearLayout {
     private static final int DEFAULT_ROW_COUNT = 12;
@@ -156,7 +156,8 @@ public class TimetableView extends LinearLayout {
 
             RelativeLayout.LayoutParams param = createStickerParam(schedule);
             tv.setLayoutParams(param);
-            tv.setPadding(10, 0, 10, 0);
+            tv.setPadding(0, 0, 0, 0);
+            tv.setGravity(Gravity.CENTER);
             tv.setText(schedule.getClassTitle() + "\n" + schedule.getClassPlace());
             tv.setTextColor(Color.parseColor("#FFFFFF"));
             tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, DEFAULT_STICKER_FONT_SIZE_DP);
@@ -169,13 +170,13 @@ public class TimetableView extends LinearLayout {
                         stickerSelectedListener.OnStickerSelected(count, schedules);
                 }
             });
-
+            tv.setBackgroundColor(Color.parseColor(schedule.getColorCode()));
             sticker.addTextView(tv);
             sticker.addSchedule(schedule);
             stickers.put(count, sticker);
             stickerBox.addView(tv);
         }
-        setStickerColor();
+//        setStickerColor();
     }
 
     public String createSaveData() {
@@ -263,7 +264,8 @@ public class TimetableView extends LinearLayout {
 
         for (i = 0; i < size; i++) {
             for (TextView v : stickers.get(orders[i]).getView()) {
-                v.setBackgroundColor(Color.parseColor(stickerColors[i % (colorSize)]));
+//                v.setBackgroundColor(Color.parseColor(stickerColors[i % (colorSize)]));
+                v.setBackgroundColor(Color.parseColor(stickerColors[new Random().nextInt(9)]));
             }
         }
 
@@ -283,7 +285,8 @@ public class TimetableView extends LinearLayout {
                     tv.setTextColor(getResources().getColor(R.color.colorHeaderText));
                     tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, DEFAULT_SIDE_HEADER_FONT_SIZE_DP);
                     tv.setBackgroundColor(getResources().getColor(R.color.colorHeader));
-                    tv.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
+//                    tv.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
+                    tv.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL);
                     tv.setLayoutParams(createTableRowParam(sideCellWidth, cellHeight));
                 } else {
                     tv.setText("");
@@ -303,9 +306,9 @@ public class TimetableView extends LinearLayout {
         for (int i = 0; i < columnCount; i++) {
             TextView tv = new TextView(context);
             if (i == 0) {
-                tv.setLayoutParams(createTableRowParam(sideCellWidth, cellHeight));
+                tv.setLayoutParams(createTableRowParam(sideCellWidth, dp2Px(DEFAULT_CELL_HEIGHT_DP)));
             } else {
-                tv.setLayoutParams(createTableRowParam(cellHeight));
+                tv.setLayoutParams(createTableRowParam(dp2Px(DEFAULT_CELL_HEIGHT_DP)));
             }
             tv.setTextColor(getResources().getColor(R.color.colorHeaderText));
             tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, DEFAULT_HEADER_FONT_SIZE_DP);

@@ -14,6 +14,7 @@ public class Schedule implements Serializable {
     String classTitle="";
     String classPlace="";
     String professorName="";
+    String colorCode="";
     private int day = 0;
     private Time startTime;
     private Time endTime;
@@ -45,6 +46,14 @@ public class Schedule implements Serializable {
 
     public void setClassPlace(String classPlace) {
         this.classPlace = classPlace;
+    }
+
+    public String getColorCode() {
+        return colorCode;
+    }
+
+    public void setColorCode(String colorCode) {
+        this.colorCode = colorCode;
     }
 
     public int getDay() {

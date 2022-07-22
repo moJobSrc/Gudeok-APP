@@ -3,7 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Gudeok-APP/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
+        <entry key="..\:/Gudeok-APP/app/src/main/res/layout/fragment_schedule.xml" value="0.328125" />
         <entry key="..\:/Gudeok-APP/app/src/main/res/layout/fragment_setting.xml" value="0.3233695652173913" />
+        <entry key="..\:/Gudeok-APP/scheduleLayout/src/main/res/drawable/cell.xml" value="0.1755" />
+        <entry key="..\:/Gudeok-APP/scheduleLayout/src/main/res/drawable/ic_launcher_background.xml" value="0.1755" />
+        <entry key="..\:/Gudeok-APP/scheduleLayout/src/main/res/layout/collegetimetable_layout.xml" value="0.16666666666666666" />
+        <entry key="..\:/Gudeok-APP/tablelayout/src/main/res/drawable/cell.xml" value="0.173" />
+        <entry key="..\:/Gudeok-APP/tablelayout/src/main/res/layout/collegetimetable_layout.xml" value="0.1640625" />
+        <entry key="..\:/Gudeok-APP/timetable/src/main/res/drawable/cell.xml" value="0.1755" />
+        <entry key="..\:/Gudeok-APP/timetable/src/main/res/drawable/ic_launcher_background.xml" value="0.1755" />
+        <entry key="..\:/Gudeok-APP/timetable/src/main/res/layout/collegetimetable_layout.xml" value="0.16666666666666666" />
+        <entry key="..\:/Gudeok-APP/timetable/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1755" />
+        <entry key="..\:/Gudeok-APP/timetableview/src/main/res/drawable/item_border.xml" value="0.173" />
+        <entry key="..\:/Gudeok-APP/timetableview/src/main/res/layout/inner_table.xml" value="0.16666666666666666" />
+        <entry key="..\:/Gudeok-APP/timetableview/src/main/res/layout/table_header.xml" value="0.16666666666666666" />
+        <entry key="..\:/Gudeok-APP/timetableview/src/main/res/layout/view_timetable.xml" value="0.16666666666666666" />
         <entry key="..\:/GudeokApp/View/src/main/res/layout/activity_main.xml" value="0.34375" />
         <entry key="..\:/GudeokApp/app/src/main/res/drawable/alarm_icon.xml" value="0.252" />
         <entry key="..\:/GudeokApp/app/src/main/res/drawable/bottom_stroke.xml" value="0.252" />

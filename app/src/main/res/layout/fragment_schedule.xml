@@ -6,20 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".fragment.ScheduleFragment">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <com.github.tlaabs.timetableview.TimetableView
+        android:id="@+id/timetable"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <com.github.tlaabs.timetableview.TimetableView
-            android:id="@+id/timetable"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            app:start_time="1"
-            app:row_count="8"
-            app:header_highlight_color="@color/primaryColor"/>
-
-    </LinearLayout>
-
+        android:layout_height="match_parent"
+        app:sticker_colors="@array/default_sticker_color"
+        app:cell_height="100dp"
+        app:start_time="1"
+        app:column_count="6"
+        app:row_count="12" />
 </FrameLayout>

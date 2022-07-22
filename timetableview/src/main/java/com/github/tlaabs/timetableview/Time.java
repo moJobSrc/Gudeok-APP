@@ -1,5 +1,7 @@
 package com.github.tlaabs.timetableview;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
 public class Time implements Serializable {
@@ -27,5 +29,10 @@ public class Time implements Serializable {
 
     public void setMinute(int minute) {
         this.minute = minute;
+    }
+
+    @NonNull
+    public String toString() {
+        return this.hour + " : " + this.minute + "";
     }
 }
