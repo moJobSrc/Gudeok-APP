@@ -53,7 +53,7 @@ class HomeFragment : Fragment() {
         Dinner("석식")
     }
 
-    fun getCafeteria(date: Date, type: LunchType) {
+    private fun getCafeteria(date: Date, type: LunchType) {
 
         val request = Request.Builder()
             .url("https://open.neis.go.kr/hub/mealServiceDietInfo?" +

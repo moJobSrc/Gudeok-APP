@@ -285,8 +285,8 @@ public class TimetableView extends LinearLayout {
                     tv.setTextColor(getResources().getColor(R.color.colorHeaderText));
                     tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, DEFAULT_SIDE_HEADER_FONT_SIZE_DP);
                     tv.setBackgroundColor(getResources().getColor(R.color.colorHeader));
-//                    tv.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
-                    tv.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL);
+                    tv.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
+//                    tv.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
                     tv.setLayoutParams(createTableRowParam(sideCellWidth, cellHeight));
                 } else {
                     tv.setText("");

@@ -16,10 +16,14 @@ import com.gudeok.gudeokapp.BuildConfig
 import com.gudeok.gudeokapp.R
 import okhttp3.*
 import java.io.IOException
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.*
 import java.util.concurrent.TimeUnit
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 
 class ScheduleFragment : Fragment() {
@@ -30,7 +34,7 @@ class ScheduleFragment : Fragment() {
             return if (tag.length <= 23) tag else tag.substring(0, 23)
         }
 
-    val colors = arrayOf("#f08676", "#ecc369", "#a7ca70", "#7dd1c1", "#7aa5e9", "#fbaa68", "#9f86e1", "#78cb87", "#d397ed")
+    val colors = arrayOf("#f08676", "#ecc369", "#a7ca70", "#7dd1c1", "#7aa5e9", "#fbaa68", "#9f86e1", "#78cb87", "#d397ed", "#f64f8c", "#6f88a2", "#8b5182")
 
     private val client = OkHttpClient.Builder().connectTimeout(15, TimeUnit.SECONDS).build()
     val schedules = ArrayList<Schedule>()
@@ -51,7 +55,12 @@ class ScheduleFragment : Fragment() {
     private fun getSchedule(root: View) {
         val timetable = root.findViewById<TimetableView>(R.id.timetable)
 
-//        val c
+        val calendar = Calendar.getInstance()
+        val dateFmt = SimpleDateFormat("yyyyMMdd")
+        calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
+        val mondayDate = dateFmt.format(calendar.time)
+        calendar.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY)
+        val fridayDate = dateFmt.format(calendar.time)
 
         /**
         ATPT_OFCDC_SC_CODE	     STRING(필수)	    시도교육청코드
@@ -68,7 +77,7 @@ class ScheduleFragment : Fragment() {
         val request = Request.Builder()
             .url("https://open.neis.go.kr/hub/hisTimetable?key=${BuildConfig.NEIS_KEY}&Type=json&pIndex=1" +
                     "&pSize=100&ATPT_OFCDC_SC_CODE=C10&SD_SCHUL_CODE=7150087" +
-                    "&GRADE=1&CLASS_NM=6&TI_FROM_YMD=20220620&TI_TO_YMD=20220624")
+                    "&GRADE=1&CLASS_NM=6&TI_FROM_YMD=${mondayDate}&TI_TO_YMD=${fridayDate}")
             .build()
 
         client.newCall(request).enqueue(object: Callback {
@@ -80,19 +89,34 @@ class ScheduleFragment : Fragment() {
                 val response = response.body!!
                 val jsonParser = JsonParser.parseString(response.string()).asJsonObject["hisTimetable"].asJsonArray[1].asJsonObject
                 val jsonArray = jsonParser["row"].asJsonArray
-                jsonArray.forEachIndexed { index, jsonElement ->
+                val colorMap = HashMap<String, String>()
+                var index = 0;
+
+                jsonArray.forEachIndexed { _, jsonElement ->
                     val schedule = Schedule()
                     val sc_class = jsonElement.asJsonObject
                     val perio = getScheduleTime(sc_class["PERIO"].asString)
+                    val title = sc_class["ITRT_CNTNT"].asString
                     val date = sc_class["ALL_TI_YMD"].asString //20201231
                     val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd")
                     val localdate = LocalDate.parse(date, formatter).atStartOfDay();
 
-                    schedule.classTitle = sc_class["ITRT_CNTNT"].asString
+                    schedule.classTitle = title
                     schedule.day = localdate.dayOfWeek.value - 1 //월 ~ 일을 1 ~ 7로 리턴해주기때문에 1을 빼준다
                     schedule.startTime = perio[0]
                     schedule.endTime = perio[1]
-                    schedule.colorCode = colors[index]
+                    if (!colorMap.containsKey(title)) {
+                        index++
+                        if (index > colors.size - 1) {
+                            index -= (colors.size - 1);
+                            colorMap[title] = colors[index]
+                        } else {
+                            colorMap[title] = colors[index]
+                        }
+                        schedule.colorCode = colorMap[title]
+                    } else {
+                        schedule.colorCode = colorMap[title]
+                    }
 
                     schedules.add(schedule)
                 }
