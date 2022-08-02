@@ -1,14 +1,11 @@
 package com.gudeok.gudeokapp.activity
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toolbar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.snackbar.Snackbar
 import com.gudeok.gudeokapp.R
 import com.gudeok.gudeokapp.databinding.ActivityMainBinding
 import com.gudeok.gudeokapp.fragment.*
@@ -55,30 +52,41 @@ class MainActivity : AppCompatActivity() {
     private fun setListenerBottomNavigation() {
         binding.bottomNavigation.menu.getItem(2).isChecked = true
         binding.bottomNavigation.setOnItemSelectedListener {
+            val fragment = supportFragmentManager.findFragmentById(R.id.fragment)
             when(it.itemId) {
                 R.id.menu_main -> {
+                    if (fragment is HomeFragment)
+                        return@setOnItemSelectedListener false
                     toolbar_title.text = "구덕고등학교"
                     replaceFragment(HomeFragment())
                     true
                 }
                 R.id.menu_setting -> {
+                    if (fragment is SettingFragment)
+                        return@setOnItemSelectedListener false
                     toolbar_title.text = "설정"
                     replaceFragment(SettingFragment())
                     true
                 }
                 R.id.menu_commnunity -> {
+                    if (fragment is CommunityFragment)
+                        return@setOnItemSelectedListener false
                     toolbar_title.text = "커뮤니티"
                     replaceFragment(CommunityFragment())
                     true
                 }
                 R.id.menu_schedule -> {
+                    if (fragment is ScheduleFragment)
+                        return@setOnItemSelectedListener false
                     toolbar_title.text = "시간표"
                     replaceFragment(ScheduleFragment())
                     true
                 }
                 R.id.menu_restaurant -> {
+                    if (fragment is CafeteriaFragment)
+                        return@setOnItemSelectedListener false
                     toolbar_title.text = "급식"
-                    replaceFragment(BobFragment())
+                    replaceFragment(CafeteriaFragment())
                     true
                 }
                 else -> false
@@ -86,6 +94,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
     private fun replaceFragment(fragmentLayout: Fragment) {
-        supportFragmentManager.beginTransaction().replace(R.id.fragment , fragmentLayout).commitAllowingStateLoss()
+        supportFragmentManager.beginTransaction().replace(R.id.fragment, fragmentLayout)
+            .commitAllowingStateLoss()
     }
 }

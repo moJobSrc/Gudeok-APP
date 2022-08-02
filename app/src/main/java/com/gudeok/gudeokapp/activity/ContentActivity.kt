@@ -1,15 +1,14 @@
 package com.gudeok.gudeokapp.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.gudeok.gudeokapp.databinding.ActivityContentBinding
 import com.gudeok.gudeokapp.networkModel.PostResponse
 import com.gudeok.gudeokapp.retrofit.RetrofitManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.properties.Delegates
 
 class ContentActivity : AppCompatActivity() {
 

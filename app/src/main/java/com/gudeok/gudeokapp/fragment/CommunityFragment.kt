@@ -1,5 +1,6 @@
 package com.gudeok.gudeokapp.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,7 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.gudeok.gudeokapp.R
+import com.gudeok.gudeokapp.activity.WriteActivty
 import com.gudeok.gudeokapp.networkModel.PostListResponse
 import com.gudeok.gudeokapp.retrofit.RetrofitManager
 import retrofit2.Call
@@ -16,20 +19,11 @@ import retrofit2.Response
 import java.util.*
 import kotlin.collections.ArrayList
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [CommunityFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class CommunityFragment : Fragment() {
 
     lateinit var postlistAdapater: PostlistAdapter
-    private var postData: ArrayList<PostData> = ArrayList<PostData>()
+    private var postData: ArrayList<PostData> = ArrayList()
     lateinit var bbslistView: RecyclerView
     private val retrofit = RetrofitManager.getClient()
 
@@ -44,7 +38,8 @@ class CommunityFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_community, container, false)
 
-        bbslistView = view.findViewById<RecyclerView>(R.id.communityView)!!
+        bbslistView = view.findViewById(R.id.communityView)!!
+        val fab = view.findViewById<FloatingActionButton>(R.id.fab)
 
         retrofit.loadbbsList(1).enqueue(object: Callback<PostListResponse> {
             override fun onResponse(call: Call<PostListResponse>, response: Response<PostListResponse>) {
@@ -63,6 +58,11 @@ class CommunityFragment : Fragment() {
             }
 
         })
+
+        fab.setOnClickListener {
+            val intent = Intent(requireContext(), WriteActivty::class.java)
+            startActivity(intent)
+        }
 
         return view
     }

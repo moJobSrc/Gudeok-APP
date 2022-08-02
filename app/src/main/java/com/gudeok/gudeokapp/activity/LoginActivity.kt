@@ -1,16 +1,15 @@
 package com.gudeok.gudeokapp.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import com.gudeok.gudeokapp.databinding.ActivityLoginBinding
 import com.gudeok.gudeokapp.networkModel.LogInCheckOkResponse
 import com.gudeok.gudeokapp.networkModel.ResponseDTO
-import com.gudeok.gudeokapp.databinding.ActivityLoginBinding
-import com.gudeok.gudeokapp.networkModel.TokenCheckResponse
+import com.gudeok.gudeokapp.retrofit.RetrofitManager
 import com.gudeok.gudeokapp.util.App
 import com.gudeok.gudeokapp.util.Prefs
-import com.gudeok.gudeokapp.retrofit.RetrofitManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

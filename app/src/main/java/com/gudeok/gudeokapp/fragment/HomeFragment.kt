@@ -19,10 +19,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 class HomeFragment : Fragment() {
     private val client = OkHttpClient.Builder().connectTimeout(15, TimeUnit.SECONDS).build()
     lateinit var tempText:TextView
@@ -89,12 +85,17 @@ class HomeFragment : Fragment() {
     @Throws(IOException::class, JSONException::class)
     fun lookUpWeather(baseDate: String, time: String) {
         var weather = ""
-        var tmperature = ""
+        var temperature = ""
+        val contentMessage by lazy {
+            getString(R.string.weatherTemp, temperature)
+        }
         val baseTime = timeChange(time) //"0500" 조회하고 싶은 시간
+        // 로딩 텍스트
+        tempText.text = "로딩중입니다.."
         // 홈페이지에서 받은 키
         val serviceKey =
             "e%2BE34vxmWfjVQxtz3yvzeTnghYXewlok7FK5jEX7ffIBm9L%2Fky35XT7CYYWxkfBgfPS22GXw9UzQREBRIRVnpQ%3D%3D"
-        "e%25252BE34vxmWfjVQxtz3yvzeTnghYXewlok7FK5jEX7ffIBm9L%25252Fky35XT7CYYWxkfBgfPS22GXw9UzQREBRIRVnpQ%25253D%25253D"
+        // "e%25252BE34vxmWfjVQxtz3yvzeTnghYXewlok7FK5jEX7ffIBm9L%25252Fky35XT7CYYWxkfBgfPS22GXw9UzQREBRIRVnpQ%25253D%25253D"
 
         val httpUrl: HttpUrl = HttpUrl.Builder()
             .scheme("http")
@@ -137,12 +138,14 @@ class HomeFragment : Fragment() {
                             }
                         }
                         if (item.category == "TMP") {
-                            tmperature = item.fcstValue
+                            temperature = item.fcstValue
                         }
                     }
                     activity?.runOnUiThread {
-                        tempText.text = getString(R.string.weatherTemp, tmperature)
-                        skyText.text = weather
+                        if (context != null) {
+                            tempText.text = contentMessage
+                            skyText.text = weather
+                        }
                     }
                 } catch (e: Exception) {
                     activity?.runOnUiThread {

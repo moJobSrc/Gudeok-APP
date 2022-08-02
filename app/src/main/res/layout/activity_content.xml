@@ -17,13 +17,23 @@
         android:orientation="vertical"
         android:gravity="center_vertical">
 
-        <ImageView
-            android:id="@+id/contentBackButton"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_sharp_arrow_back_ios_24"
-            android:layout_marginStart="10dp"
-            android:gravity="center"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp">
+
+            <ImageButton
+                android:id="@+id/contentBackButton"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_sharp_arrow_back_ios_24"
+                android:gravity="center"
+                android:clickable="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:focusable="true" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
     <View
@@ -105,14 +115,22 @@
             android:layout_marginBottom="4dp"
             android:background="@color/lowestColor"/>
 
-        <TextView
-            android:text="본문 내용"
-            android:textSize="15sp"
-            android:layout_margin="4dp"
-            android:id="@+id/post_content"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textIsSelectable="true"/>
+            android:minHeight="150dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:text="본문 내용"
+                android:textSize="15sp"
+                android:id="@+id/post_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textIsSelectable="true"/>
+
+
+        </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -128,19 +146,20 @@
 
             <LinearLayout
                 android:id="@+id/gaechuButton"
+                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:minHeight="30dp"
                 android:background="@drawable/gaechu_background"
                 android:gravity="center_vertical|center"
-                android:padding="5dp"
+                android:padding="13dp"
                 android:orientation="horizontal"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground">
 
                 <ImageView
-                    android:layout_width="17dp"
-                    android:layout_height="17dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:src="@drawable/ic_round_thumb_up_24"
                     app:tint="@color/white" />
 
@@ -148,9 +167,9 @@
                     android:id="@+id/gaechu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
+                    android:layout_marginStart="16dp"
                     android:text="141"
-                    android:textSize="12sp"
+                    android:textSize="15sp"
                     android:textColor="@color/white"
                     android:textStyle="bold"/>
 
@@ -164,18 +183,19 @@
             <LinearLayout
                 android:id="@+id/beechuButton"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
+                android:minHeight="30dp"
                 android:background="@drawable/beechu_background"
                 android:gravity="center_vertical|center"
-                android:padding="5dp"
+                android:padding="13dp"
                 android:orientation="horizontal"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground">
 
                 <ImageView
-                    android:layout_width="17dp"
-                    android:layout_height="17dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:src="@drawable/ic_round_thumb_down_24"
                     app:tint="@color/white" />
 
@@ -183,9 +203,9 @@
                     android:id="@+id/beechu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
+                    android:layout_marginStart="16dp"
                     android:text="141"
-                    android:textSize="12sp"
+                    android:textSize="15sp"
                     android:textColor="@color/white"
                     android:textStyle="bold"/>
 
