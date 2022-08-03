@@ -1,4 +1,4 @@
-package com.gudeok.gudeokapp.fragment
+package com.gudeok.gudeokapp.data
 
 import com.google.gson.annotations.SerializedName
 import java.util.*

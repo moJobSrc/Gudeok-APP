@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.iterator
 import androidx.fragment.app.Fragment
 import com.gudeok.gudeokapp.R
 import com.gudeok.gudeokapp.databinding.ActivityMainBinding
@@ -51,42 +52,40 @@ class MainActivity : AppCompatActivity() {
 
     private fun setListenerBottomNavigation() {
         binding.bottomNavigation.menu.getItem(2).isChecked = true
+        binding.bottomNavigation.menu.getItem(2).isEnabled = false
         binding.bottomNavigation.setOnItemSelectedListener {
-            val fragment = supportFragmentManager.findFragmentById(R.id.fragment)
+            for (menu in binding.bottomNavigation.menu) {
+                menu.isEnabled = true
+            }
             when(it.itemId) {
                 R.id.menu_main -> {
-                    if (fragment is HomeFragment)
-                        return@setOnItemSelectedListener false
                     toolbar_title.text = "구덕고등학교"
                     replaceFragment(HomeFragment())
+                    it.isEnabled = false
                     true
                 }
                 R.id.menu_setting -> {
-                    if (fragment is SettingFragment)
-                        return@setOnItemSelectedListener false
                     toolbar_title.text = "설정"
                     replaceFragment(SettingFragment())
+                    it.isEnabled = false
                     true
                 }
                 R.id.menu_commnunity -> {
-                    if (fragment is CommunityFragment)
-                        return@setOnItemSelectedListener false
                     toolbar_title.text = "커뮤니티"
                     replaceFragment(CommunityFragment())
+                    it.isEnabled = false
                     true
                 }
                 R.id.menu_schedule -> {
-                    if (fragment is ScheduleFragment)
-                        return@setOnItemSelectedListener false
                     toolbar_title.text = "시간표"
                     replaceFragment(ScheduleFragment())
+                    it.isEnabled = false
                     true
                 }
                 R.id.menu_restaurant -> {
-                    if (fragment is CafeteriaFragment)
-                        return@setOnItemSelectedListener false
                     toolbar_title.text = "급식"
                     replaceFragment(CafeteriaFragment())
+                    it.isEnabled = false
                     true
                 }
                 else -> false

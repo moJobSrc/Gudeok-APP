@@ -1,4 +1,4 @@
-package com.gudeok.gudeokapp.fragment
+package com.gudeok.gudeokapp.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.gudeok.gudeokapp.R
 import com.gudeok.gudeokapp.activity.ContentActivity
+import com.gudeok.gudeokapp.data.PostData
 
 class PostlistAdapter(private val context: Context, private val data: ArrayList<PostData>): RecyclerView.Adapter<PostlistAdapter.ViewHolder>() {
 

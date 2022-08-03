@@ -6,4 +6,12 @@
     <string name="menuRestaurant">급식</string>
     <string name="menuSetting">설정</string>
     <string name="weatherTemp">%sº</string>
+    <string name="short_sunday">일</string>
+    <string name="short_monday">월</string>
+    <string name="short_tueday">화</string>
+    <string name="short_wedday">수</string>
+    <string name="short_thuday">목</string>
+    <string name="short_friday">급</string>
+    <string name="short_satday">토</string>
+    <string name="cafeteria">%s</string>
 </resources>

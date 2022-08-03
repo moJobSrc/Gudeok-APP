@@ -11,12 +11,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.gudeok.gudeokapp.R
 import com.gudeok.gudeokapp.activity.WriteActivty
+import com.gudeok.gudeokapp.adapter.PostlistAdapter
+import com.gudeok.gudeokapp.data.PostData
 import com.gudeok.gudeokapp.networkModel.PostListResponse
 import com.gudeok.gudeokapp.retrofit.RetrofitManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 import kotlin.collections.ArrayList
 
 

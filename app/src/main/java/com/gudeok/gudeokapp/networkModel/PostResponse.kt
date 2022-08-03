@@ -1,7 +1,7 @@
 package com.gudeok.gudeokapp.networkModel
 
 import com.google.gson.annotations.SerializedName
-import com.gudeok.gudeokapp.fragment.PostData
+import com.gudeok.gudeokapp.data.PostData
 
 data class PostResponse(
     @SerializedName("status") val status: Int,
