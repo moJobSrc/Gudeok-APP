@@ -1,5 +1,6 @@
 package com.gudeok.gudeokapp.fragment
 
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,12 +9,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.gson.Gson
+import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.google.gson.annotations.SerializedName
 import com.gudeok.gudeokapp.BuildConfig
 import com.gudeok.gudeokapp.R
 import okhttp3.*
 import org.json.JSONException
+import org.json.JSONObject
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -23,6 +26,8 @@ class HomeFragment : Fragment() {
     private val client = OkHttpClient.Builder().connectTimeout(15, TimeUnit.SECONDS).build()
     lateinit var tempText:TextView
     lateinit var skyText: TextView
+    lateinit var lunchText: TextView
+    lateinit var dinnerText: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +37,8 @@ class HomeFragment : Fragment() {
 
         tempText = root.findViewById(R.id.tempText)
         skyText = root.findViewById(R.id.skyText)
+        lunchText = root.findViewById(R.id.lunchText)
+        dinnerText = root.findViewById(R.id.dinnerText)
 
         val date = Date(System.currentTimeMillis())
 
@@ -40,21 +47,22 @@ class HomeFragment : Fragment() {
         Log.i("datetime.../",getDay + getTime)
         lookUpWeather(getDay,getTime)
         getCafeteria(Date(), LunchType.Lunch)
+        getCafeteria(Date(), LunchType.Dinner)
 
         return root
     }
 
     enum class LunchType(val type: String) {
-        Lunch("중식"),
-        Dinner("석식")
+        Lunch("2"),
+        Dinner("3")
     }
 
     private fun getCafeteria(date: Date, type: LunchType) {
-
+        Log.d("급식", type.toString())
         val request = Request.Builder()
             .url("https://open.neis.go.kr/hub/mealServiceDietInfo?" +
                     "Type=json&pIndex=1&pSize=1&ATPT_OFCDC_SC_CODE=C10&SD_SCHUL_CODE=7150087" +
-                    "&MMEAL_SC_NM=${type.type}&MLSV_FROM_YMD=20220520&MLSV_TO_YMD=20220520" +
+                    "&MMEAL_SC_CODE=${type.type}&MLSV_FROM_YMD=20220806&MLSV_TO_YMD=20220806" +
                     "&key=${BuildConfig.NEIS_KEY}")
             .build()
 
@@ -64,7 +72,35 @@ class HomeFragment : Fragment() {
             }
 
             override fun onResponse(call: Call, response: Response) {
-                Log.d("점심", response.body!!.string())
+                try {
+                    var content = response.body!!.string()
+                    //                Log.d("급식", content)
+                    var mealServiceDietInfo =
+                        JSONObject(content).getJSONArray("mealServiceDietInfo").getJSONObject(1)
+                    //                Log.d("급식", mealServiceDietInfo.toString())
+                    var row = mealServiceDietInfo.getJSONArray("row").getJSONObject(0)
+                    //                Log.d("급식", row.toString())
+                    var DDISH_NM = row.getString("DDISH_NM").replace("<br/>", "\n").trim()
+                        .replace("\\([^)]*\\)".toRegex(), " ").replace("\\s+".toRegex(), "\n")
+                    Log.d("급식", DDISH_NM)
+
+                    activity?.runOnUiThread {
+                        if (type.toString().equals("Lunch")) {
+                            lunchText.setText(DDISH_NM)
+                        } else {
+                            dinnerText.setText(DDISH_NM)
+                        }
+                    }
+                } catch (e: java.lang.Exception){
+                    e.printStackTrace()
+                    activity?.runOnUiThread {
+                        if (type.toString().equals("Lunch")) {
+                            lunchText.setText("급식 정보를 가져오지\n못하였습니다.")
+                        } else {
+                            dinnerText.setText("급식 정보를 가져오지\n못하였습니다.")
+                        }
+                    }
+                }
             }
 
         })

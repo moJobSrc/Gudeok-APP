@@ -133,8 +133,10 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/lunchText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:minHeight="45dp"
                             android:layout_marginTop="5dp"
                             android:text="돼지국밥+소면\n부추겉절이(국밥)\n도토리묵/양념장\n석박지\n토마토꿀절임"
                             android:textColor="@color/middleColor"
@@ -159,14 +161,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="중식"
+                            android:text="석식"
                             android:textColor="@color/primaryColor"
                             android:textSize="17sp"
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/dinnerText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:minHeight="45dp"
                             android:layout_marginTop="5dp"
                             android:text="돼지국밥+소면\n부추겉절이(국밥)\n도토리묵/양념장\n석박지\n토마토꿀절임"
                             android:textColor="@color/middleColor"
