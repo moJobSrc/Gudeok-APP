@@ -14,4 +14,5 @@
     <string name="short_friday">급</string>
     <string name="short_satday">토</string>
     <string name="cafeteria">%s</string>
+    <string name="notFoundCafeteria">급식 정보를 가져오지\n못하였습니다.</string>
 </resources>

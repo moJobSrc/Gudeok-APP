@@ -112,6 +112,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:minHeight="45dp"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -136,15 +137,15 @@
                             android:id="@+id/lunchText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:minHeight="45dp"
                             android:layout_marginTop="5dp"
+                            android:ellipsize="end"
                             android:text="돼지국밥+소면\n부추겉절이(국밥)\n도토리묵/양념장\n석박지\n토마토꿀절임"
                             android:textColor="@color/middleColor"
                             android:textSize="12sp" />
 
                     </LinearLayout>
 
-                    <View
+                    <Space
                         android:layout_width="20dp"
                         android:layout_height="0dp" />
 
@@ -170,8 +171,8 @@
                             android:id="@+id/dinnerText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:minHeight="45dp"
                             android:layout_marginTop="5dp"
+                            android:ellipsize="end"
                             android:text="돼지국밥+소면\n부추겉절이(국밥)\n도토리묵/양념장\n석박지\n토마토꿀절임"
                             android:textColor="@color/middleColor"
                             android:textSize="12sp" />

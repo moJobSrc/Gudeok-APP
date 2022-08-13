@@ -14,6 +14,7 @@ import com.google.gson.JsonParser
 import com.google.gson.annotations.SerializedName
 import com.gudeok.gudeokapp.BuildConfig
 import com.gudeok.gudeokapp.R
+import com.gudeok.gudeokapp.util.Util
 import okhttp3.*
 import org.json.JSONException
 import org.json.JSONObject
@@ -58,17 +59,23 @@ class HomeFragment : Fragment() {
     }
 
     private fun getCafeteria(date: Date, type: LunchType) {
-        Log.d("급식", type.toString())
+        lunchText.text = ""
+        dinnerText.text = ""
+
+        val notFoundErrorText by lazy {
+            getString(R.string.notFoundCafeteria)
+        }
+
         val request = Request.Builder()
             .url("https://open.neis.go.kr/hub/mealServiceDietInfo?" +
                     "Type=json&pIndex=1&pSize=1&ATPT_OFCDC_SC_CODE=C10&SD_SCHUL_CODE=7150087" +
-                    "&MMEAL_SC_CODE=${type.type}&MLSV_FROM_YMD=20220806&MLSV_TO_YMD=20220806" +
+                    "&MMEAL_SC_CODE=${type.type}&MLSV_FROM_YMD=${Util.getTodayDate()}&MLSV_TO_YMD=${Util.getTodayDate()}" +
                     "&key=${BuildConfig.NEIS_KEY}")
             .build()
 
         client.newCall(request).enqueue(object: Callback {
             override fun onFailure(call: Call, e: IOException) {
-                TODO("Not yet implemented")
+                Log.d("Error", e.message!!)
             }
 
             override fun onResponse(call: Call, response: Response) {
@@ -81,23 +88,22 @@ class HomeFragment : Fragment() {
                     var row = mealServiceDietInfo.getJSONArray("row").getJSONObject(0)
                     //                Log.d("급식", row.toString())
                     var DDISH_NM = row.getString("DDISH_NM").replace("<br/>", "\n").trim()
-                        .replace("\\([^)]*\\)".toRegex(), " ").replace("\\s+".toRegex(), "\n")
+                        .replace("\\([^)]*\\)".toRegex(), " ").replace("\\s+".toRegex(), "\n") //영양 정보라 논의후 처리
                     Log.d("급식", DDISH_NM)
 
                     activity?.runOnUiThread {
-                        if (type.toString().equals("Lunch")) {
-                            lunchText.setText(DDISH_NM)
+                        if (type == LunchType.Lunch) {
+                            lunchText.text = DDISH_NM
                         } else {
-                            dinnerText.setText(DDISH_NM)
+                            dinnerText.text = DDISH_NM
                         }
                     }
                 } catch (e: java.lang.Exception){
                     e.printStackTrace()
                     activity?.runOnUiThread {
-                        if (type.toString().equals("Lunch")) {
-                            lunchText.setText("급식 정보를 가져오지\n못하였습니다.")
-                        } else {
-                            dinnerText.setText("급식 정보를 가져오지\n못하였습니다.")
+                        if (context != null) { // context null 에러 발생
+                            lunchText.text = notFoundErrorText
+                            dinnerText.text = notFoundErrorText
                         }
                     }
                 }
@@ -178,7 +184,7 @@ class HomeFragment : Fragment() {
                         }
                     }
                     activity?.runOnUiThread {
-                        if (context != null) {
+                        if (context != null) { // context null이면 에러 발생
                             tempText.text = contentMessage
                             skyText.text = weather
                         }
