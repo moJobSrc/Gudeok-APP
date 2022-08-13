@@ -13,7 +13,7 @@ import retrofit2.Response
 class ContentActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityContentBinding
-    val retrofit = RetrofitManager.getClient()
+    val retrofit = RetrofitManager.retrofitClient
     var post_id = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {

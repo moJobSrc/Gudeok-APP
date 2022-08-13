@@ -18,7 +18,7 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private val pref: Prefs = App.prefs
-    private val retrofit = RetrofitManager.getClient()
+    private val retrofit = RetrofitManager.retrofitClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

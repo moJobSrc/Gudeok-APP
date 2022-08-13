@@ -2,6 +2,7 @@ package com.gudeok.gudeokapp.retrofit
 
 import android.util.Log
 import com.gudeok.gudeokapp.util.App
+import com.gudeok.gudeokapp.util.Dlog
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -22,19 +23,21 @@ object RetrofitManager {
         .client(OkHttpClient.Builder().connectTimeout(10, TimeUnit.SECONDS).addInterceptor(AuthInterceptor()).build())
         .build()
 
-    private val retrofitService: RetrofitService = retrofit.create(RetrofitService::class.java)
-
-    fun getClient(): RetrofitService {
-        //클라이언트 리턴
-        return retrofitService
+    val retrofitClient: RetrofitService by lazy {
+        retrofit.create(RetrofitService::class.java)
     }
+
+//    fun getClient(): RetrofitService {
+//        //클라이언트 리턴
+//        return retrofitService
+//    }
 
 }
 
 class AuthInterceptor : Interceptor {
     //retrofit 클라이언트에 토큰값을 담아줌
     override fun intercept(chain: Interceptor.Chain): Response {
-        Log.d("Token", App.prefs.token?: "")
+        Dlog.d(App.prefs.token?: "")
         val req =
             chain.request().newBuilder().addHeader("Authorization", "Bearer ${App.prefs.token}").build()
         return chain.proceed(req)

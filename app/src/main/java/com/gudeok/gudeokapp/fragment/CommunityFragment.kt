@@ -26,7 +26,7 @@ class CommunityFragment : Fragment() {
     lateinit var postlistAdapater: PostlistAdapter
     private var postData: ArrayList<PostData> = ArrayList()
     lateinit var bbslistView: RecyclerView
-    private val retrofit = RetrofitManager.getClient()
+    private val retrofit = RetrofitManager.retrofitClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

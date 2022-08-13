@@ -15,7 +15,7 @@ import retrofit2.Response
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity: AppCompatActivity() {
-    private val retrofit = RetrofitManager.getClient()
+    private val retrofit = RetrofitManager.retrofitClient
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
