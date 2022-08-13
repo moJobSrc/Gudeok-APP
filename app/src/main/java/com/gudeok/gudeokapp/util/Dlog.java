@@ -53,7 +53,7 @@ public class Dlog {
         sb.append(ste.getFileName().replace(".java", ""));
         sb.append("::");
         sb.append(ste.getMethodName());
-        sb.append("]");
+        sb.append("] ");
         sb.append(message);
 
         return sb.toString();
