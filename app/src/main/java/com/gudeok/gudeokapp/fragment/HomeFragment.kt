@@ -14,6 +14,7 @@ import com.google.gson.JsonParser
 import com.google.gson.annotations.SerializedName
 import com.gudeok.gudeokapp.BuildConfig
 import com.gudeok.gudeokapp.R
+import com.gudeok.gudeokapp.util.Dlog
 import com.gudeok.gudeokapp.util.Util
 import okhttp3.*
 import org.json.JSONException
@@ -45,7 +46,7 @@ class HomeFragment : Fragment() {
 
         val getDay = SimpleDateFormat("yyyyMMdd").format(date)
         val getTime = SimpleDateFormat("HH00").format(date)
-        Log.i("datetime.../",getDay + getTime)
+        Dlog.i(getDay + getTime)
         lookUpWeather(getDay,getTime)
         getCafeteria(Date(), LunchType.Lunch)
         getCafeteria(Date(), LunchType.Dinner)
@@ -75,21 +76,21 @@ class HomeFragment : Fragment() {
 
         client.newCall(request).enqueue(object: Callback {
             override fun onFailure(call: Call, e: IOException) {
-                Log.d("Error", e.message!!)
+                Dlog.e(e.message.toString())
             }
 
             override fun onResponse(call: Call, response: Response) {
                 try {
                     var content = response.body!!.string()
-                    //                Log.d("급식", content)
+
                     var mealServiceDietInfo =
                         JSONObject(content).getJSONArray("mealServiceDietInfo").getJSONObject(1)
-                    //                Log.d("급식", mealServiceDietInfo.toString())
+
                     var row = mealServiceDietInfo.getJSONArray("row").getJSONObject(0)
-                    //                Log.d("급식", row.toString())
+
                     var DDISH_NM = row.getString("DDISH_NM").replace("<br/>", "\n").trim()
                         .replace("\\([^)]*\\)".toRegex(), " ").replace("\\s+".toRegex(), "\n") //영양 정보라 논의후 처리
-                    Log.d("급식", DDISH_NM)
+                    Dlog.d(DDISH_NM)
 
                     activity?.runOnUiThread {
                         if (type == LunchType.Lunch) {
@@ -135,9 +136,7 @@ class HomeFragment : Fragment() {
         // 로딩 텍스트
         tempText.text = "로딩중입니다.."
         // 홈페이지에서 받은 키
-        val serviceKey =
-            "e%2BE34vxmWfjVQxtz3yvzeTnghYXewlok7FK5jEX7ffIBm9L%2Fky35XT7CYYWxkfBgfPS22GXw9UzQREBRIRVnpQ%3D%3D"
-        // "e%25252BE34vxmWfjVQxtz3yvzeTnghYXewlok7FK5jEX7ffIBm9L%25252Fky35XT7CYYWxkfBgfPS22GXw9UzQREBRIRVnpQ%25253D%25253D"
+        val serviceKey = BuildConfig.APIS_KEY
 
         val httpUrl: HttpUrl = HttpUrl.Builder()
             .scheme("http")
@@ -153,19 +152,19 @@ class HomeFragment : Fragment() {
             .addQueryParameter("base_time", baseTime)
             .addQueryParameter("dataType", "json")
             .build()
-        Log.d("url", httpUrl.toString())
+
         val builder = Request.Builder()
             .url(httpUrl)
             .get()
             .build()
         client.newCall(builder).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                Log.e("error", e.message.toString())
+                Dlog.e(e.message.toString())
             }
 
             override fun onResponse(call: Call, response: Response) {
                 val res = response.body!!.string()
-                Log.d("response", res)
+                Dlog.d(res)
                 //정각이 넘어가면 오류 발생  timeChange 함수 변경 필요
                 try {
                     val json = JsonParser.parseString(res).asJsonObject
