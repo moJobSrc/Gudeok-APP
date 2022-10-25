@@ -16,6 +16,7 @@ android {
         versionName "1.0"
         buildConfigField "String","NEIS_KEY",properties['neis.api.key']
         buildConfigField "String","APIS_KEY",properties['apis.data.serviceKey']
+        buildConfigField "String","SERVER_IP",properties['server.ip']
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled = true
     }
@@ -45,7 +46,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-scalars:2.5.0'
     implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.9.3'
     implementation 'com.squareup.okhttp3:okhttp:4.9.3'
-
+    implementation 'com.google.android.gms:play-services-auth:20.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.7.2'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'androidx.core:core-ktx:1.7.0'

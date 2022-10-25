@@ -1,6 +1,7 @@
 package com.gudeok.gudeokapp.retrofit
 
 import android.util.Log
+import com.gudeok.gudeokapp.BuildConfig
 import com.gudeok.gudeokapp.util.App
 import com.gudeok.gudeokapp.util.Dlog
 import okhttp3.Interceptor
@@ -13,7 +14,7 @@ import java.time.Duration
 import java.util.concurrent.TimeUnit
 
 object RetrofitManager {
-    private const val baseURL = "http://39.113.240.156:3000/"
+    private const val baseURL = BuildConfig.SERVER_IP
 
     //retrofit 클라이언트 구성
     private val retrofit = Retrofit.Builder()

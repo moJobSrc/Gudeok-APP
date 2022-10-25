@@ -58,7 +58,6 @@ class ScheduleFragment : Fragment() {
 
     private fun getSchedule(root: View) {
         val timetable = root.findViewById<TimetableView>(R.id.timetable)
-
         /**
         ATPT_OFCDC_SC_CODE	     STRING(필수)	    시도교육청코드
         SD_SCHUL_CODE	         STRING(필수)	    표준학교코드
@@ -84,7 +83,6 @@ class ScheduleFragment : Fragment() {
 
             override fun onResponse(call: Call, response: Response) {
                 val response = response.body!!
-                Dlog.i(response.string())
 
                 try {
                     val jsonParser = JsonParser.parseString(response.string())
@@ -126,6 +124,7 @@ class ScheduleFragment : Fragment() {
                     activity?.runOnUiThread {
                         timetable.add(schedules)
                     }
+
                 } catch (e: IllegalStateException) { // 학교 시간표 업데이트가 되지않아 반환하는 값 없음 ex) {"RESULT":{"CODE":"INFO-200","MESSAGE":"해당하는 데이터가 없습니다."}}
                     Dlog.e(e.message)
                 } catch (e: Exception) {

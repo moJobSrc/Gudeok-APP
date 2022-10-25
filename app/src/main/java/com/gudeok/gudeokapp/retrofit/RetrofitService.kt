@@ -24,6 +24,24 @@ interface RetrofitService {
         @Query("page") id: Int
     ): Call<PostListResponse>
 
+    @POST("/commentlist")
+    fun loadCommentList(
+        @Query("postId") id: Int
+    ): Call<CommentListResponse>
+
+    @POST("/bbsWrite")
+    fun writePost(
+        @Query("title") title: String,
+        @Query("content") content: String
+    ): Call<PostWriteResponse>
+
+    @POST("/commentWrite")
+    fun writeComment(
+        @Query("postId") postId: Int,
+        @Query("content") content: String,
+        @Query("parentId") parentId: String?
+    ): Call<CommentWriteResponse>
+
     @POST("/bbsGet")
     fun seePost(
         @Query("id") id: Int

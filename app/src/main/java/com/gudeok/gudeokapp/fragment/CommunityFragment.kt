@@ -3,10 +3,10 @@ package com.gudeok.gudeokapp.fragment
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.gudeok.gudeokapp.R
@@ -18,7 +18,6 @@ import com.gudeok.gudeokapp.retrofit.RetrofitManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.collections.ArrayList
 
 
 class CommunityFragment : Fragment() {

@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="GD LOGO"
+        android:text=""
         android:textColor="@color/topColor"
         android:textSize="30sp"
         android:layout_marginTop="115dp"
@@ -32,14 +32,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/border_stroke"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp">
+            android:padding="5dp">
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_margin="5dp"
                 android:src="@drawable/ic_person_black_48dp"/>
             <EditText
@@ -72,14 +70,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/border_stroke"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp">
+            android:padding="5dp">
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_margin="5dp"
                 android:src="@drawable/ic_lock_black_48dp"/>
             <EditText
@@ -94,6 +90,16 @@
                 android:textSize="16sp"
                 android:background="@android:color/transparent"/>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/login_register_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:text="등록하기"
+            android:textSize="14sp"
+            android:textColor="@color/primaryColor"/>
     </LinearLayout>
 
     <LinearLayout
@@ -117,26 +123,6 @@
             android:text="로그인"
             android:textSize="20sp"
             android:textColor="@color/white"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:focusable="true"
-        android:clickable="true"
-        android:foreground="?attr/selectableItemBackground">
-
-        <TextView
-            android:id="@+id/login_register_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="회원가입"
-            android:textSize="20sp"
-            android:textColor="@color/primaryColor"/>
     </LinearLayout>
 
 
